@@ -1,16 +1,13 @@
 function convertHTML(str) {
-  const entitiesObj = {
-  	"&" : "&amp;",
-  	"<" : "&lt;",
-  	">" : "&gt;",
-  	"\"" : "&quot;",
-  	"\'" : "&apos;"
-  };
-  let newStr = str;
-  for (let i in entitiesObj) {
-  	newStr = newStr.replace(i, entitiesObj[i])
-  }
-  return newStr;
+  const entitiesArr = [
+  	[/&/g, "&amp;"],
+  	[/</g, "&lt;"],
+  	[">", "&gt;"],
+  	["\"", "&quot;"],
+  	["\'", "&apos;"]
+  ];
+  entitiesArr.map(x => str = str.replace(x[0], x[1]))
+  return str;
 }
 
-console.log(convertHTML("Dolce < Gabbana"));
+console.log(convertHTML("Dolce < Gabb < ana"));
